@@ -26,7 +26,7 @@ A small Python package and CLI for defining tool-calling LLM agents as folders a
 |---|---|
 | Python | ≥ 3.12 |
 | OS | Windows 10/11 (primary), macOS, Linux |
-| Runtime deps | `pydantic-ai-slim[google,anthropic,openai]>=2.54,<3`, `python-dotenv` |
+| Runtime deps | `pydantic-ai-slim[google,anthropic,openai,spec]>=2.54,<3` (`spec` brings PyYAML for `agent.yaml`), `python-dotenv` |
 | Dev deps | `pytest`, `ruff` |
 | Packaging | `pyproject.toml`, `uv`, src layout. Installable via `pip install git+<repo>@<tag>` |
 | Size | `src/agentfw` ≤ 300 non-blank, non-comment lines |
