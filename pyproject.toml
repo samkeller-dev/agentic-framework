@@ -1,0 +1,37 @@
+[project]
+name = "agentfw"
+version = "0.1.0"
+description = "Define tool-calling LLM agents as folders and run them unattended. A convention layer over PydanticAI."
+readme = "README.md"
+requires-python = ">=3.12"
+license = "MIT"
+authors = [{ name = "Sam Keller" }]
+dependencies = [
+    "pydantic-ai-slim[google,anthropic,openai,spec]>=2.54,<3",
+    "python-dotenv",
+]
+
+[project.scripts]
+agentfw = "agentfw.cli:main"
+
+[dependency-groups]
+dev = ["pytest", "ruff"]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/agentfw"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests", "examples/project"]
+markers = ["live: needs provider API keys and network"]
+addopts = "-q"
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B"]
