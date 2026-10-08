@@ -27,11 +27,15 @@ packages = ["src/agentfw"]
 [tool.pytest.ini_options]
 testpaths = ["tests", "examples/project"]
 markers = ["live: needs provider API keys and network"]
-addopts = "-q"
+addopts = "-q -m 'not live'"
 
 [tool.ruff]
 line-length = 100
+extend-exclude = ["*.md"]
 target-version = "py312"
 
 [tool.ruff.lint]
 select = ["E", "F", "I", "UP", "B"]
+
+[tool.ruff.lint.isort]
+known-first-party = ["agentfw", "helpers"]
