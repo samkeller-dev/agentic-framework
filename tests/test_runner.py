@@ -130,7 +130,10 @@ def test_model_raises(project):
 
 
 def test_keyboard_interrupt(project):
-    def fn(messages, info):
+    # Async so the interrupt is raised on the event loop thread, as a real Ctrl+C is. A sync
+    # model function runs on an anyio worker thread, and raising there orphans that thread,
+    # which then keeps the interpreter alive after the test session ends.
+    async def fn(messages, info):
         raise KeyboardInterrupt
 
     r = run_agent(load_agent("plain", project), "go", model=FunctionModel(fn))
