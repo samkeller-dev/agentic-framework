@@ -1,0 +1,9 @@
+model: google:gemini-3.7-flash
+model_settings:
+  max_tokens: 2048
+
+skills:
+  - skills/summarise-report
+limits:
+  requests: 10
+  timeout_s: 300
